@@ -290,22 +290,3 @@ storage ansible_host=<external-ip> fqdn=<fqdn>
 ![Сформированный Ansible inventory](screenshots/for_ini.png)
 
 ---
-
-# Результат
-
-В результате выполнения домашнего задания:
-
-- создана и настроена группа безопасности;
-- созданы две Web VM с использованием `count`;
-- созданы две Database VM с использованием `for_each`;
-- параметры Database VM вынесены в общую переменную типа `list(object)`;
-- реализовано чтение SSH-ключа с помощью `file()`;
-- создана общая переменная `map(object)` для `metadata`;
-- созданы три дополнительных диска с использованием `count`;
-- создана отдельная VM `storage`;
-- дополнительные диски подключены через динамический блок `secondary_disk` и `for_each`;
-- создан динамический Ansible inventory с помощью `templatefile()`;
-- inventory содержит группы `webservers`, `databases` и `storage`;
-- для каждой VM указаны `ansible_host` и `fqdn`.
-
-Все Terraform-конфигурации и необходимые скриншоты находятся в репозитории проекта.
