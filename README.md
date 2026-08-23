@@ -80,25 +80,34 @@ variable "each_vm" {
     cpu         = number
     ram         = number
     disk_volume = number
+    core_fraction = number
+    preemptible   = bool
   }))
+
+  default = [
+    {
+      vm_name     = "main"
+      cpu         = 2
+      ram         = 4
+      disk_volume = 20
+      core_fraction = 20
+      preemptible   = true
+    },
+    {
+      vm_name     = "replica"
+      cpu         = 4
+      ram         = 8
+      disk_volume = 30
+      core_fraction = 20
+      preemptible   = true
+    }
+  ]
 }
+
 ```
 
 Для виртуальных машин заданы разные параметры CPU, RAM и диска.
 
-Пример используемых значений:
-
-```text
-main:
-  CPU         = 2
-  RAM         = 4
-  disk_volume = 20
-
-replica:
-  CPU         = 4
-  RAM         = 8
-  disk_volume = 30
-```
 
 Создание ВМ выполняется с использованием мета-аргумента `for_each`.
 
